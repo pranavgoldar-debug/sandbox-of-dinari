@@ -41,9 +41,14 @@ def main() -> None:
     print("Connected to Dinari sandbox.\n")
 
     # List a few tokenized stocks available through the API.
-    stocks = client.v2.market_data.stocks.list()
-    print(f"Fetched {len(stocks.data)} stocks. First few:")
-    for stock in stocks.data[:5]:
+    result = client.v2.market_data.stocks.list()
+
+    # Depending on the SDK version, .list() returns either a response object
+    # with a `.data` attribute or the list of stocks directly. Handle both.
+    stocks = result.data if hasattr(result, "data") else list(result)
+
+    print(f"Fetched {len(stocks)} stocks. First few:")
+    for stock in stocks[:5]:
         # Attributes vary by stock; print the common ones defensively.
         symbol = getattr(stock, "symbol", "?")
         name = getattr(stock, "name", "")
