@@ -1,87 +1,26 @@
 # Dinari Sandbox
 
-A minimal Python sandbox for the [Dinari API](https://docs.dinari.com/docs/quickstart),
-configured to run against the **sandbox** environment.
+This project uses **Dinari's official sandbox** directly — no custom code.
 
-## 1. Get your sandbox API keys
+## Where to work
 
-1. Log in at [partners.dinari.com](https://partners.dinari.com).
-2. On the home page, **select the Sandbox environment**.
-3. Generate an API key and copy the **API Key ID** and **API Secret Key**.
-
-## 2. Set up
-
-```bash
-# Create and activate a virtual environment
-python3 -m venv .venv
-source .venv/bin/activate
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Add your credentials
-cp .env.example .env
-# then edit .env and paste your API Key ID and Secret Key
-```
-
-Your `.env` is git-ignored, so your credentials never get committed.
-
-## 3. Run
-
-```bash
-python main.py
-```
-
-You should see a confirmation that the client connected to the sandbox and a
-short list of tokenized stocks.
-
-## Web dashboard (localhost)
-
-Prefer a browser over the terminal? Run the local dashboard:
-
-```bash
-python app.py
-```
-
-Then open **http://localhost:5001** in your browser. It shows your entity,
-accounts, cash balances, portfolio, and available stocks — pulled live from the
-sandbox each time you refresh. Press `Ctrl+C` in the terminal to stop it.
-
-## What's inside
-
-| File | Purpose |
+| Purpose | Link |
 | --- | --- |
-| `app.py` | Local web dashboard at http://localhost:5001 |
-| `main.py` | Quickstart: connects to the sandbox and lists stocks (read-only) |
-| `create_account.py` | Creates an entity + account, prints their IDs |
-| `requirements.txt` | `dinari-api-sdk`, `python-dotenv`, `flask` |
-| `.env.example` | Template for your credentials — copy to `.env` |
-| `.gitignore` | Keeps `.env` and Python artifacts out of git |
+| Dashboard (create accounts, view wallets, manage API keys) | [partners.dinari.com/home](https://partners.dinari.com/home) — set Environment to **Sandbox** |
+| Guides (quickstart, KYC, wallets) | [docs.dinari.com/docs/quickstart](https://docs.dinari.com/docs/quickstart) |
+| Interactive API reference — run sandbox calls in the browser | [docs.dinari.com/reference](https://docs.dinari.com/reference) |
 
-## Create an entity and account
+## How to use the sandbox (no coding)
 
-Once `main.py` works, run:
+1. Go to [partners.dinari.com/home](https://partners.dinari.com/home) and make sure
+   the **Environment** dropdown says **Sandbox**.
+2. Manage accounts, wallets, and API keys there with the on-screen buttons.
+3. To run API calls (get stocks, create account, place a test order, check
+   balances), open [docs.dinari.com/reference](https://docs.dinari.com/reference),
+   paste your API key, pick an endpoint, and click **Try It**.
 
-```bash
-python create_account.py
-```
+## Note on API keys
 
-This creates an **entity** (the account holder) and an **account** under it,
-then prints their IDs. Refresh [partners.dinari.com/home](https://partners.dinari.com/home)
-(with the Sandbox environment selected) and you'll see them appear.
-
-## Next steps
-
-The client exposes the full API under `client.v2`. A few things to explore
-(see the [docs](https://docs.dinari.com/)):
-
-- `client.v2.entities.create(name=...)` — create an entity (account)
-- `client.v2.market_data.stocks.list()` — list available stocks
-- KYC and wallet management — see the
-  [quickstart guide](https://docs.dinari.com/docs/quickstart)
-
-## Going to production
-
-When you're ready, generate **production** keys at partners.dinari.com and
-remove `environment="sandbox"` from the client in `main.py` (production is the
-default).
+Sandbox API keys are shown only once when created. Keep them private — never
+paste a secret key into a screenshot, chat, or commit. If a key is exposed,
+revoke it in the dashboard and create a new one.

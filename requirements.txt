@@ -1,3 +1,0 @@
-dinari-api-sdk
-python-dotenv
-flask
