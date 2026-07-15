@@ -35,13 +35,26 @@ python main.py
 You should see a confirmation that the client connected to the sandbox and a
 short list of tokenized stocks.
 
+## Web dashboard (localhost)
+
+Prefer a browser over the terminal? Run the local dashboard:
+
+```bash
+python app.py
+```
+
+Then open **http://localhost:5001** in your browser. It shows your entity,
+accounts, cash balances, portfolio, and available stocks — pulled live from the
+sandbox each time you refresh. Press `Ctrl+C` in the terminal to stop it.
+
 ## What's inside
 
 | File | Purpose |
 | --- | --- |
+| `app.py` | Local web dashboard at http://localhost:5001 |
 | `main.py` | Quickstart: connects to the sandbox and lists stocks (read-only) |
 | `create_account.py` | Creates an entity + account, prints their IDs |
-| `requirements.txt` | `dinari-api-sdk` + `python-dotenv` |
+| `requirements.txt` | `dinari-api-sdk`, `python-dotenv`, `flask` |
 | `.env.example` | Template for your credentials — copy to `.env` |
 | `.gitignore` | Keeps `.env` and Python artifacts out of git |
 
