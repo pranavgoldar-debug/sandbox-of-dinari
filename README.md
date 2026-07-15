@@ -39,10 +39,23 @@ short list of tokenized stocks.
 
 | File | Purpose |
 | --- | --- |
-| `main.py` | Quickstart script: connects to the sandbox and lists stocks |
+| `main.py` | Quickstart: connects to the sandbox and lists stocks (read-only) |
+| `create_account.py` | Creates an entity + account, prints their IDs |
 | `requirements.txt` | `dinari-api-sdk` + `python-dotenv` |
 | `.env.example` | Template for your credentials — copy to `.env` |
 | `.gitignore` | Keeps `.env` and Python artifacts out of git |
+
+## Create an entity and account
+
+Once `main.py` works, run:
+
+```bash
+python create_account.py
+```
+
+This creates an **entity** (the account holder) and an **account** under it,
+then prints their IDs. Refresh [partners.dinari.com/home](https://partners.dinari.com/home)
+(with the Sandbox environment selected) and you'll see them appear.
 
 ## Next steps
 
