@@ -1,0 +1,2 @@
+dinari-api-sdk
+python-dotenv
